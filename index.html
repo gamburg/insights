@@ -193,6 +193,8 @@ setInterval(function() {
 
 function hasScrolled() {
     var st = $(this).scrollTop();
+	
+    $(".insight_overlay").addClass('nav-up');
     
     // Make sure they scroll more than delta
     if(Math.abs(lastScrollTop - st) <= delta)
