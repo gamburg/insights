@@ -191,58 +191,60 @@ var scrollDirection = "down";
 var scrollDistance = 0;
 
 $(window).scroll(function() {
-  var scroll = $(window).scrollTop();
-  if (scroll > position) {
-    console.log('scrollDown');
-    if (scrollDirection !== "down") {
-      scrollDistance = 0;
-      scrollDirection = "down";
-    }
-    scrollDistance += scroll - position;
-   // $('div.keep-track').text('Scrolling Down Scripts ' + scrollDistance);
-     //$('div.keep-track').text( parseInt($('.placeholder').css('top') ) + " " + scroll );
-    $('div.keep-track').text($(window).height());
+	var scroll = $(window).scrollTop();
+	if (scroll > position) {
+		if (scrollDirection !== "down") {
+			scrollDistance = 0;
+			scrollDirection = "down";
+		}
+		scrollDistance += scroll - position;
 
-    // Scroll Down Scripts:
-    
-    $(".insight_overlay").addClass('hide');
-    
-    if (scrollDistance >= 40) {
-      $('header').removeClass('show').addClass('hide');
+	    // ---------  Scroll Down Scripts ----------
+	    
+	    $(".insight_overlay").addClass('hide');
+	    
+	    if (scrollDistance >= 40) {
+	    	$('header').removeClass('show').addClass('hide');
 
-    }
-    
-    if( scrollDistance >= 20 ) {
-       $('.placeholder').removeClass('show').addClass('hide');
-    }
-    
-   var placeholderDistanceFromTop = parseInt($('.placeholder').css('top') );
-   var halfWindowHeight = parseInt( $(window).height() / 2);
-    
-    if( (placeholderDistanceFromTop - halfWindowHeight) < scroll) {
-   	  $(".placeholder").css('top', scroll + halfWindowHeight + "px");
-    }
+	    }
+	    
+	    if( scrollDistance >= 20 ) {
+	    	$('.placeholder').removeClass('show').addClass('hide');
+	    }
+	    
+	    var placeholderDistanceFromTop = parseInt($('.placeholder').css('top') );
+	    var halfWindowHeight = parseInt( $(window).height() / 2);
+	    
+	    if( (placeholderDistanceFromTop - halfWindowHeight) < scroll) {
+	    	$(".placeholder").css('top', scroll + halfWindowHeight + "px");
+	    }
 
-  } else {
-    console.log('scrollUp');
-    if (scrollDirection !== "up") {
-      scrollDistance = 0;
-      scrollDirection = "up";
-    }
-    scrollDistance += position - scroll;
-    $('div.keep-track').text('Scrolling Up Scripts ' + scrollDistance);
-    
-    // Scroll Up Scripts:
+	    // -----------------------------------------
+
+} else {
+	
+	if (scrollDirection !== "up") {
+		scrollDistance = 0;
+		scrollDirection = "up";
+	}
+	
+	scrollDistance += position - scroll;
+	$('div.keep-track').text('Scrolling Up Scripts ' + scrollDistance);
+
+    // ---------  Scroll Up Scripts ----------
+
     if( scrollDistance >= 10 ) {
-       $('header').removeClass('hide').addClass('show');
-       }
-       
-     if( scrollDistance >= 40 ) {
-       $('.placeholder').removeClass('hide').addClass('show');
-       }
+    	$('header').removeClass('hide').addClass('show');
+    }
+
+    if( scrollDistance >= 40 ) {
+    	$('.placeholder').removeClass('hide').addClass('show');
+    }
+
+    // -----------------------------------------
     
-  }
-  position = scroll;
+}
+position = scroll;
 });
 
 
