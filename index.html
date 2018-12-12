@@ -58,6 +58,22 @@ header div {
   padding: 30px;
 }
 
+div.placeholder {
+  position: absolute;
+  background: #FCFDFD;
+  width:100%;
+  height:3px;
+  top: 0;
+  -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+}
+
+	div.placeholder.show {
+	  opacity:.3;
+	}
+
 div.bottom_bar {
   position: absolute;
   bottom: 0;
@@ -208,15 +224,15 @@ $(window).scroll(function() {
 
 	    }
 	    
-	    if( scrollDistance >= 20 ) {
+	    if( scrollDistance >= 0 ) {
 	    	$('.placeholder').removeClass('show').addClass('hide');
 	    }
 	    
 	    var placeholderDistanceFromTop = parseInt($('.placeholder').css('top') );
-	    var halfWindowHeight = parseInt( $(window).height() / 2);
+	    var placeholderHeadroom = parseInt( $(window).height() / 3);
 	    
-	    if( (placeholderDistanceFromTop - halfWindowHeight) < scroll) {
-	    	$(".placeholder").css('top', scroll + halfWindowHeight + "px");
+	    if( (placeholderDistanceFromTop - placeholderHeadroom) < scroll) {
+	    	$(".placeholder").css('top', scroll + placeholderHeadroom + "px");
 	    }
 
 	    // -----------------------------------------
@@ -227,7 +243,7 @@ $(window).scroll(function() {
 		scrollDistance = 0;
 		scrollDirection = "up";
 	}
-	
+
 	scrollDistance += position - scroll;
 	$('div.keep-track').text('Scrolling Up Scripts ' + scrollDistance);
 
@@ -237,7 +253,7 @@ $(window).scroll(function() {
     	$('header').removeClass('hide').addClass('show');
     }
 
-    if( scrollDistance >= 40 ) {
+    if( scrollDistance >= 100 ) {
     	$('.placeholder').removeClass('hide').addClass('show');
     }
 
@@ -280,6 +296,10 @@ position = scroll;
     <p>Presently she began again. ‘I wonder if I shall fall right through the earth! How funny it’ll seem to come out among the people that walk with their heads downward! The Antipathies, I think—’ (she was rather glad there was no one listening, this time, as it didn’t sound at all the right word) ‘—but I shall have to ask them what the name of the country is, you know. Please, Ma’am, is this New Zealand or Australia?’ (and she tried to curtsey as she spoke—fancy curtseying as you’re falling through the air! Do you think you could manage it?) ‘And what an ignorant little girl she’ll think me for asking! No, it’ll never do to ask: perhaps I shall see it written up somewhere.’</p>
   </div>
 	  <div class="insight_overlay"></div>
+	</div>
+
+	<div class="placeholder hide">
+		Placeholder
 	</div>
 
   <div class="bottom_bar">
