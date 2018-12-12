@@ -260,6 +260,11 @@ $(window).scroll(function() {
 	    	$(".placeholder").css('top', scroll + placeholderHeadroom + "px");
 	    }
 
+	    if( $('.placeholder').offset().top - $(window).scrollTop() < $(window).height() ) {
+   	$('.placeholder>.hand').css('position', "absolute");
+	}
+	    
+
 	    // -----------------------------------------
 
 } else {
@@ -281,6 +286,10 @@ $(window).scroll(function() {
     if( scrollDistance >= 100 ) {
     	$('.placeholder').removeClass('hide').addClass('show');
     }
+
+    if( $('.placeholder').offset().top - $(window).scrollTop() > $(window).height() ) {
+   	 $('.placeholder>.hand').css('position', "fixed");
+	}
 
     // -----------------------------------------
     
