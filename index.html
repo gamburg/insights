@@ -68,7 +68,7 @@ div.placeholder {
   width:100%;
   height:3px;
   opacity: 0;
-  top: 0;
+  bottom: 0;
       font-family: "Finland Rounded", sans-serif;
     font-size: 2rem;
     text-align: right;
@@ -253,7 +253,7 @@ $(window).scroll(function() {
 
 	    }
 	    
-	    if( scrollDistance >= 0 ) {
+	    if( scrollDistance >= 60 ) {
 	    	$('.placeholder').removeClass('show').addClass('hide');
 	    }
 	    
