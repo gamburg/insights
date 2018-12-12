@@ -80,11 +80,19 @@ div.placeholder {
 	  opacity:1;
 	}
 
-	.placeholder>span {
-   	   padding-right: 100px;
+	.placeholder>div.hand {
+   	   position: absolute;
+	    right: 0;
+	    bottom: 0;
+	    padding-right: 100px;
+	    margin-bottom: 10px;
 	}
 
+
 div.horizontal-line {
+	position:absolute;
+	top:0;
+	left:0;
  	background: #FCFDFD;
 	opacity: .3;
 	width: 100%;
@@ -312,7 +320,7 @@ position = scroll;
 	</div>
 
 	<div class="placeholder hide">
-		<span><i class="fas fa-hand-point-down"></i></span>
+		<div class="hand"><a href="#placeholder"><i class="fas fa-hand-point-down"></i></a></div>
 		<div class="horizontal-line"></div>
 	</div>
 
