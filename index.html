@@ -186,45 +186,65 @@ function registerEvents(){
    Hide / Show on scroll 
    ------------------------------ */
 
-var didScroll;
-var lastScrollTop = 0;
-var delta = 1;
-var navbarHeight = 40;
+var position = $(window).scrollTop();
+var scrollDirection = "down";
+var scrollDistance = 0;
 
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
+$(window).scroll(function() {
+  var scroll = $(window).scrollTop();
+  if (scroll > position) {
+    console.log('scrollDown');
+    if (scrollDirection !== "down") {
+      scrollDistance = 0;
+      scrollDirection = "down";
     }
-}, 250);
+    scrollDistance += scroll - position;
+   // $('div.keep-track').text('Scrolling Down Scripts ' + scrollDistance);
+     //$('div.keep-track').text( parseInt($('.placeholder').css('top') ) + " " + scroll );
+    $('div.keep-track').text($(window).height());
 
-function hasScrolled() {
-    var st = $(this).scrollTop();
-	
+    // Scroll Down Scripts:
+    
     $(".insight_overlay").addClass('hide');
     
-    // Make sure they scroll more than delta
-    if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('header').removeClass('show').addClass('hide');
-    } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('hide').addClass('show');
-        }
+    if (scrollDistance >= 40) {
+      $('header').removeClass('show').addClass('hide');
+
     }
     
-    lastScrollTop = st;
-}
+    if( scrollDistance >= 20 ) {
+       $('.placeholder').removeClass('show').addClass('hide');
+    }
+    
+   var placeholderDistanceFromTop = parseInt($('.placeholder').css('top') );
+   var halfWindowHeight = parseInt( $(window).height() / 2);
+    
+    if( (placeholderDistanceFromTop - halfWindowHeight) < scroll) {
+   	  $(".placeholder").css('top', scroll + halfWindowHeight + "px");
+    }
+
+  } else {
+    console.log('scrollUp');
+    if (scrollDirection !== "up") {
+      scrollDistance = 0;
+      scrollDirection = "up";
+    }
+    scrollDistance += position - scroll;
+    $('div.keep-track').text('Scrolling Up Scripts ' + scrollDistance);
+    
+    // Scroll Up Scripts:
+    if( scrollDistance >= 10 ) {
+       $('header').removeClass('hide').addClass('show');
+       }
+       
+     if( scrollDistance >= 40 ) {
+       $('.placeholder').removeClass('hide').addClass('show');
+       }
+    
+  }
+  position = scroll;
+});
+
 
 </script>
 
