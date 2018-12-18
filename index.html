@@ -52,17 +52,19 @@ a:hover {
 }
 	  
 header {
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -ms-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
+    
     opacity: 1;
 }
 
-header div {
+header>div {
   position: fixed;
   display: inline-block;
   padding: 30px;
+  opacity: 1;
+  -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
 }
 
 div.placeholder {
@@ -212,7 +214,8 @@ div.insight {
 
       showElement();
       interval = setTimeout(function(){
-       $(".bottom_bar").fadeOut();
+       //$(".bottom_bar").fadeOut();
+       $('header>.burger_wrapper').removeClass('show').addClass('hide');
        clear();
      },2000);
     }
@@ -223,7 +226,8 @@ div.insight {
    }
 
    function showElement(){
-     $(".bottom_bar").fadeIn();
+     //$(".bottom_bar").fadeIn();
+     $('header>.burger_wrapper').removeClass('hide').addClass('show');
    }
 
    function registerEvents(){
@@ -272,7 +276,8 @@ $(window).scroll(function() {
 	    $(".insight_overlay").addClass('hide');
 	    
 	    if (scrollDistance >= 40) {
-	    	$('header').removeClass('show').addClass('hide');
+	    	$('header>.logo_wrapper').removeClass('show').addClass('hide');
+        $('header>.burger_wrapper').removeClass('show').addClass('hide');
 
 	    }
 	    
@@ -312,7 +317,8 @@ $(window).scroll(function() {
     // ---------  Scroll Up Scripts ----------
 
     if( scrollDistance >= 10 ) {
-    	$('header').removeClass('hide').addClass('show');
+    	$('header>.logo_wrapper').removeClass('hide').addClass('show');
+      $('header>.burger_wrapper').removeClass('hide').addClass('show');
     }
 
     if( scrollDistance >= 100 && !finishedReading ) {
