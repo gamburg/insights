@@ -72,6 +72,10 @@ header>div {
     -o-transition: opacity .5s ease-in-out;
 }
 
+a.bookmark {
+  cursor: pointer;
+}
+
 div.placeholder {
   position: absolute;
   width:100%;
@@ -208,6 +212,11 @@ div.insight {
     $( ".hand>a" ).on("click", function() {
       var placeholderHeadroom = parseInt( $(window).height() / 3);
       $("html, body").animate({ scrollTop: ($('.placeholder').offset().top - placeholderHeadroom) }, 1000);
+    })
+
+    $( ".bookmark" ).on("click", function() {
+      console.log($(document).scrollTop());
+      window.location.hash = '#' + $(document).scrollTop();
     })
 
 
@@ -352,7 +361,7 @@ position = scroll;
       <a href="/">INSIGHTS</a>
     </div>
     <div class="burger_wrapper">
-      <a href="#eye_openers"><i class="fas fa-bookmark"></i></a>
+      <a class="bookmark"><i class="fas fa-bookmark"></i></a>
     </div>
   </header>
 
