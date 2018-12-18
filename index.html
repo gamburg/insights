@@ -72,7 +72,7 @@ div.placeholder {
   opacity: 0;
   bottom: 0;
       font-family: "Finland Rounded", sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: right;
 
   -webkit-transition: opacity .5s ease-in-out;
@@ -90,8 +90,7 @@ div.placeholder {
    	   position: absolute;
 	    right: 0;
 	    bottom: 0;
-	    padding-right: 100px;
-	    margin-bottom: 10px;
+	    padding: 30px;
 	}
 
 
@@ -228,7 +227,6 @@ div.insight {
    }
 
    function registerEvents(){
-    console.log("Events registering");
     $(document).on("mousemove", function(){
     	initInterval();
     });
@@ -516,10 +514,11 @@ position = scroll;
 		<div class="hand"><a href="#placeholder"><i class="fas fa-hand-point-down"></i></a></div>
 		<div class="horizontal-line left"></div><div class="horizontal-line right"></div>
 	</div>
-
+<!--
   <div class="bottom_bar">
     <a class="previous_button" href="#previous"><i class="fas fa-long-arrow-alt-left"></i></a><a class="next_button" href="#next"><i class="fas fa-long-arrow-alt-right"></i></a>
   </div>
+-->
 
 </body>
 
