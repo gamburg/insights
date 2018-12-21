@@ -55,6 +55,18 @@ a:hover {
 .burger_wrapper {
   right: 0;
 }
+
+.bookmark_success {
+  display: none;
+  font-family: "Finland Rounded", sans-serif;
+}
+
+.ease_opacity {
+  -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+}
 	  
 header {
     
@@ -66,16 +78,20 @@ header>div {
   display: inline-block;
   padding: 30px;
   opacity: 1;
-  -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -ms-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
 }
 
-a.bookmark {
+.bookmark {
   cursor: pointer;
 }
+/*
+.burger_wrapper .display_this_one:nth-of-type(1) {
+  display: block;
+}
 
+.burger_wrapper:not(.display_this_one) {
+  display: none;
+}
+*/
 div.placeholder {
   position: absolute;
   width:100%;
@@ -217,6 +233,11 @@ div.insight {
     $( ".bookmark" ).on("click", function() {
       console.log($(document).scrollTop());
       window.location.hash = '#' + $(document).scrollTop();
+
+      // Switch bookmark with success message
+      $( ".bookmark" ).hide();
+      $( ".bookmark_success" ).show();
+
     })
 
 
@@ -229,7 +250,7 @@ div.insight {
       showElement();
       interval = setTimeout(function(){
        //$(".bottom_bar").fadeOut();
-       $('header>.burger_wrapper').removeClass('show').addClass('hide');
+       $('.bookmark').removeClass('show').addClass('hide');
        clear();
      },2000);
     }
@@ -241,7 +262,7 @@ div.insight {
 
    function showElement(){
      //$(".bottom_bar").fadeIn();
-     $('header>.burger_wrapper').removeClass('hide').addClass('show');
+     $('.bookmark').removeClass('hide').addClass('show');
    }
 
    function registerEvents(){
@@ -291,7 +312,7 @@ $(window).scroll(function() {
 	    
 	    if (scrollDistance >= 40) {
 	    	$('header>.logo_wrapper').removeClass('show').addClass('hide');
-        $('header>.burger_wrapper').removeClass('show').addClass('hide');
+        $('.bookmark').removeClass('show').addClass('hide');
 
 	    }
 	    
@@ -314,6 +335,13 @@ $(window).scroll(function() {
 	    if( $('.placeholder').offset().top - $(window).scrollTop() < $(window).height() ) {
    	$('.placeholder>.hand').css('position', "absolute");
 	}
+
+    if( scrollDistance >= 1000 ) {
+        
+        // Show bookmark if hidden
+        $( ".bookmark" ).show();
+        $( ".bookmark_success" ).hide();
+      }
 	    
 
 	    // -----------------------------------------
@@ -332,7 +360,7 @@ $(window).scroll(function() {
 
     if( scrollDistance >= 10 ) {
     	$('header>.logo_wrapper').removeClass('hide').addClass('show');
-      $('header>.burger_wrapper').removeClass('hide').addClass('show');
+      $('.bookmark').removeClass('hide').addClass('show');
     }
 
     if( scrollDistance >= 100 && !finishedReading ) {
@@ -342,6 +370,13 @@ $(window).scroll(function() {
     if( $('.placeholder').offset().top - $(window).scrollTop() > $(window).height() ) {
    	 $('.placeholder>.hand').css('position', "fixed");
 	}
+
+      if( scrollDistance >= 1000 ) {
+        
+        // Show bookmark if hidden
+        $( ".bookmark" ).show();
+        $( ".bookmark_success" ).hide();
+      }
 
     // -----------------------------------------
     
@@ -357,11 +392,12 @@ position = scroll;
 
 <body>
   <header class="show">
-    <div class="logo_wrapper">
+    <div class="logo_wrapper ease_opacity">
       <a href="/">INSIGHTS</a>
     </div>
     <div class="burger_wrapper">
-      <a class="bookmark"><i class="fas fa-bookmark"></i></a>
+      <span class="bookmark_success">Current Position Copied to URL <i class="far fa-check-circle"></i></span>
+      <a class="bookmark ease_opacity"><i class="fas fa-bookmark"></i></a>
     </div>
   </header>
 
