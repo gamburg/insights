@@ -259,7 +259,7 @@ div.insight {
       showElement();
       interval = setTimeout(function(){
        //$(".bottom_bar").fadeOut();
-       $('.bookmark').removeClass('show').addClass('hide');
+       //$('.bookmark').removeClass('show').addClass('hide');
        clear();
      },2000);
     }
@@ -272,6 +272,7 @@ div.insight {
    function showElement(){
      //$(".bottom_bar").fadeIn();
      $('.bookmark').removeClass('hide').addClass('show');
+     $('.logo_wrapper').removeClass('hide').addClass('show');
    }
 
    function registerEvents(){
@@ -406,7 +407,7 @@ position = scroll;
     </div>
     <div class="burger_wrapper">
       <span class="bookmark_success">Current Position Copied to URL <i class="far fa-check-circle"></i></span>
-      <a class="bookmark ease_opacity"><i class="fas fa-bookmark"></i></a>
+      <a class="bookmark ease_opacity"><i class="fas fa-bars"></i></a>
     </div>
   </header>
 
