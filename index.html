@@ -379,7 +379,8 @@ $(window).scroll(function() {
       $('.bookmark').removeClass('hide').addClass('show');
     }
 
-    if( scrollDistance >= 100 && !finishedReading ) {
+    // Show Placeholder
+    if( scrollDistance >= 100 && !finishedReading && PlaceholderIsNecessary() ) {
     	$('.placeholder').removeClass('hide').addClass('show');
     }
 
@@ -399,6 +400,19 @@ $(window).scroll(function() {
 }
 position = scroll;
 });
+
+
+/*
+ * Determine whether a placeholder is necessary based on the height of the page and where the placeholder is at on that page
+*/
+function PlaceholderIsNecessary() {
+	var windowHeight = $(window).height();
+    var documentHeight = $(document).height();
+    var placeholderIsNecessary = ( (documentHeight >= windowHeight * 5) && ($('.placeholder').offset().top >= windowHeight * 4) );
+    console.log(placeholderIsNecessary);
+    return placeholderIsNecessary;
+
+}
 
 
 </script>
