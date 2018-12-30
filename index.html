@@ -179,6 +179,17 @@ button {
 	  .hide {
 		  opacity: 0;
 	  }
+
+
+@media only screen and (max-width: 600px) {
+	header {
+	    height: 80px;
+	    width: 100%;
+	    position: fixed;
+	    background: black;
+	    z-index: 999;
+	}
+}
 	  
 header.show {
     -webkit-transition: opacity .2s ease-in-out;
@@ -197,6 +208,13 @@ div.insight_wrapper {
     width: 50%;
     text-align: left;
     opacity: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  div.insight_wrapper {
+  	left:10%;
+  	width:80%;
+  }
 }
 	  
 div.insight_overlay {
